@@ -15,26 +15,32 @@ class SchoolDetailsVM {
     var schoolInfo: School
     var onStatsLoaded: ((SchoolStats?)->Void)?
     
-    // MARK: - Initializer
+    
+    // MARK: - Initializers
     init(schoolStats: SchoolStats, school: School) {
         self.schoolStats = schoolStats
         self.schoolInfo = school
         getSchoolStats()
     }
     
+    
+    // MARK: - Methods
+
+    // Fetching school's SAT data
     private func getSchoolStats() {
         Task {
             do {
                 let data = try await NetworkManager.shared.fetchSchool(id: schoolStats.dbn)
                 setSchoolStats(data.first)
                 onStatsLoaded?(schoolStats)
-                print("STATS LOADED!!!!!")
             } catch {
                 // TODO: PRESENT CUSTOM ERROR WITH THE ERRORMANAGER RESPONSE
             }
         }
     }
     
+    
+    // Setting fetched SAT data into SchoolStats model
     private func setSchoolStats(_ school: SchoolStats?) {
         guard let school = school else { return }
         guard let _ = Int(school.satCriticalReadingAvgScore),
@@ -47,9 +53,13 @@ class SchoolDetailsVM {
         schoolStats.satMathAvgScore = school.satMathAvgScore
     }
     
+    
     // MARK: - Computed Properties
     var schoolName: String {
-        return "\(schoolStats.schoolName)"
+        // Edge case: some school names contain unnecessary suffix
+        let name = schoolStats.schoolName.removeExtraSuffix(", The")
+        
+        return "\(name)"
     }
     
     var readingAvgSAT: String {

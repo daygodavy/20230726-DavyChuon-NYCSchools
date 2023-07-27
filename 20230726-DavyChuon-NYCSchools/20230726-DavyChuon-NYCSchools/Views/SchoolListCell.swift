@@ -7,6 +7,7 @@
 
 import UIKit
 
+// Custom UITableViewCell for SchoolListVC
 class SchoolListCell: UITableViewCell {
 
     // MARK: - Variables
@@ -19,7 +20,8 @@ class SchoolListCell: UITableViewCell {
     let schoolTotalLabel = SchoolBodyLabel(textAlignment: .left, fontSize: 14)
     let schoolGraduationLabel = SchoolBodyLabel(textAlignment: .right, fontSize: 14)
     
-    // MARK: - Lifecycle
+    
+    // MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureCell()
@@ -30,10 +32,12 @@ class SchoolListCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // Edge case: handles dark / light mode toggle while cells dequeue
     override func prepareForReuse() {
         super.prepareForReuse()
         updateBorderColor()
     }
+    
     
     // MARK: - UI Setup
     private func configureCell() {
@@ -44,6 +48,7 @@ class SchoolListCell: UITableViewCell {
         selectedBackgroundView?.layer.cornerRadius = 10.0
     }
     
+    
     private func configureViews() {
         addSubview(schoolNameLabel)
         addSubview(schoolGradesLabel)
@@ -53,6 +58,7 @@ class SchoolListCell: UITableViewCell {
         
         configureLayout()
     }
+    
     
     private func configureLayout() {
         NSLayoutConstraint.activate([
@@ -82,31 +88,40 @@ class SchoolListCell: UITableViewCell {
         ])
     }
     
+    
     // MARK: - Methods
+    
+    // Setter function for SchoolListVC TableView cells
     public func set(_ school: School) {
-        schoolNameLabel.text = school.schoolName
+        schoolNameLabel.text = school.schoolName.removeExtraSuffix(", The")
         schoolLocationLabel.text = "\(school.city), \(school.stateCode)"
         schoolGradesLabel.text = "Grades: \(school.finalgrades)"
         schoolTotalLabel.text = "Students: \(school.totalStudents)"
         
-        if let gradRate = school.graduationRate?.formatToPercent() {
-            schoolGraduationLabel.text = "Graduation Rate: \(gradRate)"
-        } else {
-            schoolGraduationLabel.text = "Graduation Rate: N/A"
-        }
+        // Formats graduation rate string to tenths position
+        schoolGraduationLabel.text = "Graduation Rate: N/A"
+        guard let gradRate = school.graduationRate?.formatToPercent() else { return }
+        schoolGraduationLabel.text = "Graduation Rate: \(gradRate)"
     }
     
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        updateBorderColor()
-    }
-    
+    // Updates cell border color based on dark / light mode
     private func updateBorderColor() {
         if traitCollection.userInterfaceStyle == .dark {
             layer.borderColor = UIColor.systemGray3.cgColor
         } else {
             layer.borderColor = UIColor.systemGray5.cgColor
         }
+    }
+}
+
+
+// MARK: - SchoolListCell Extension
+extension SchoolListCell {
+    
+    // Recognizes dark / light mode toggle
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateBorderColor()
     }
 }

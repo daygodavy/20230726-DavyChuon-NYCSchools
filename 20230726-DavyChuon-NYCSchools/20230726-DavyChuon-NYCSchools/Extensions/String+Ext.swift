@@ -9,15 +9,7 @@ import UIKit
 
 extension String {
     
-    // Calculates minimum height for UILabel based on its width and text size
-    func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
-        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
-        
-        return ceil(boundingBox.height)
-    }
-    
-    // Concatenates a string represented as a percentage
+    // Shortens percent string to tenths position
     func formatToPercent() -> String {
         if let floatVal = Float(self) {
             let percentageValue = floatVal * 100
@@ -25,5 +17,12 @@ extension String {
             return formattedString
         }
         return "N/A"
+    }
+    
+    // Remove unnecessary suffix from string
+    func removeExtraSuffix(_ suffixToRemove: String) -> String {
+        guard self.hasSuffix(suffixToRemove) else { return self }
+        
+        return self.replacingOccurrences(of: suffixToRemove, with: "")
     }
 }

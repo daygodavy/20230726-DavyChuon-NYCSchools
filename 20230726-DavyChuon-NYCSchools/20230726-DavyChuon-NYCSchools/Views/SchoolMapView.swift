@@ -9,11 +9,13 @@ import UIKit
 import MapKit
 import CoreLocation
 
+// Custom UIView to display map with location pinned
 class SchoolMapView: UIView {
 
     // MARK: - UI Components
     let mapView = MKMapView()
     var coordinate = CLLocationCoordinate2D()
+    
     
     // MARK: - Initializers
     override init(frame: CGRect) {
@@ -35,9 +37,9 @@ class SchoolMapView: UIView {
         addPinToMap()
     }
     
+    
     // MARK: - UI Setup
     private func configureView() {
-        backgroundColor = .systemMint
         addSubview(mapView)
         translatesAutoresizingMaskIntoConstraints = false
         mapView.translatesAutoresizingMaskIntoConstraints = false
@@ -53,7 +55,10 @@ class SchoolMapView: UIView {
         mapView.isScrollEnabled = false
     }
     
+    
     // MARK: - Methods
+    
+    // Adds pin annotation on map view based on location initialized
     private func addPinToMap() {
         let annotation = MKPointAnnotation()
         annotation.coordinate = coordinate

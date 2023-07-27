@@ -7,6 +7,7 @@
 
 import UIKit
 
+// NetworkManager class responsible for handling network calls
 class NetworkManager {
     
     static let shared = NetworkManager()
@@ -14,10 +15,13 @@ class NetworkManager {
     private let limit: Int = 25
     let decoder = JSONDecoder()
     
+    // Defined decoding strategy to match camelcase convention of models
     private init() {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
     
+    
+    // Network request to fetch 'limit' amount of NYC Schools
     func fetchAllSchools(page: Int) async throws -> [School] {
         let offset: Int = page * limit
         let endPoint = "\(baseURL)/s3k6-pzi2.json?$limit=\(limit)&$offset=\(offset)"
@@ -31,11 +35,12 @@ class NetworkManager {
         do {
             return try decoder.decode([School].self, from: data)
         } catch {
-            print(error)
             throw ErrorManager.invalidData
         }
     }
     
+    
+    // Network request to fetch a NYC School's SAT data
     func fetchSchool(id: String) async throws -> [SchoolStats] {
         let endPoint = "\(baseURL)/f9bf-2cp4.json?dbn=\(id)"
         
@@ -48,7 +53,6 @@ class NetworkManager {
         do {
             return try decoder.decode([SchoolStats].self, from: data)
         } catch {
-            print(error)
             throw ErrorManager.invalidData
         }
     }

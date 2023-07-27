@@ -7,9 +7,10 @@
 
 import UIKit
 
+// Generic UILabel class used for 'body' text
 class SchoolBodyLabel: UILabel {
 
-    // MARK: - Lifecycle
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -24,6 +25,7 @@ class SchoolBodyLabel: UILabel {
         self.textAlignment = textAlignment
         self.font = UIFont.systemFont(ofSize: fontSize, weight: .regular)
     }
+    
     
     // MARK: - UI Setup
     private func configure() {

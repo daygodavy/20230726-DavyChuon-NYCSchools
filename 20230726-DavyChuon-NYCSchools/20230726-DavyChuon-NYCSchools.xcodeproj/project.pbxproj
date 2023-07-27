@@ -28,6 +28,7 @@
 		5B5B69522A72DFE500EA3D9B /* SchoolMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B69512A72DFE500EA3D9B /* SchoolMapView.swift */; };
 		5B5B69542A72F2F700EA3D9B /* SchoolStatsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B69532A72F2F700EA3D9B /* SchoolStatsCardView.swift */; };
 		5B5B69562A72FDEB00EA3D9B /* SchoolContactCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B69552A72FDEB00EA3D9B /* SchoolContactCardView.swift */; };
+		5B5B69582A73291A00EA3D9B /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B69572A73291A00EA3D9B /* UIViewController+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		5B5B69512A72DFE500EA3D9B /* SchoolMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolMapView.swift; sourceTree = "<group>"; };
 		5B5B69532A72F2F700EA3D9B /* SchoolStatsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolStatsCardView.swift; sourceTree = "<group>"; };
 		5B5B69552A72FDEB00EA3D9B /* SchoolContactCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolContactCardView.swift; sourceTree = "<group>"; };
+		5B5B69572A73291A00EA3D9B /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				5B5B69422A71E54000EA3D9B /* String+Ext.swift */,
+				5B5B69572A73291A00EA3D9B /* UIViewController+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 			files = (
 				5B5B69462A71EA6900EA3D9B /* NetworkManager.swift in Sources */,
 				5B5B69022A71A60400EA3D9B /* AppDelegate.swift in Sources */,
+				5B5B69582A73291A00EA3D9B /* UIViewController+Ext.swift in Sources */,
 				5B5B69322A71A6AE00EA3D9B /* SchoolListVC.swift in Sources */,
 				5B5B69522A72DFE500EA3D9B /* SchoolMapView.swift in Sources */,
 				5B5B69042A71A60400EA3D9B /* SceneDelegate.swift in Sources */,

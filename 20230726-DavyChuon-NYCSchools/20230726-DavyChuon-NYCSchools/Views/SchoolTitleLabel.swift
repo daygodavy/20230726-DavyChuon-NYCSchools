@@ -7,9 +7,10 @@
 
 import UIKit
 
+// Generic UILabel class used for 'title' text
 class SchoolTitleLabel: UILabel {
 
-    // MARK: - Lifecycle
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -35,7 +36,4 @@ class SchoolTitleLabel: UILabel {
         numberOfLines = 0
         translatesAutoresizingMaskIntoConstraints = false
     }
-    
-    
-    
 }

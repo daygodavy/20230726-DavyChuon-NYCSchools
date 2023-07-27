@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Model for NYC School general information
 struct School: Codable {
     let dbn: String
     let schoolName: String
@@ -23,6 +24,7 @@ struct School: Codable {
     let totalStudents: String
 }
 
+// Model for NYC School SAT data
 struct SchoolStats: Codable {
     let dbn: String
     let schoolName: String
