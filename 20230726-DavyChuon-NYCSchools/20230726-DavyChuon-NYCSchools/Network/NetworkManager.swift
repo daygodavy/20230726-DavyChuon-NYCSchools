@@ -32,7 +32,6 @@ class NetworkManager {
             let allSchools = try decoder.decode([School].self, from: data)
             return allSchools
         } catch {
-            print(error)
             throw ErrorManager.invalidData
         }
     }

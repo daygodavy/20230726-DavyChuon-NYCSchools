@@ -10,7 +10,6 @@ import UIKit
 class SchoolListVC: UIViewController {
 
     // MARK: - Variables
-//    var schools: [School] = School.getMockData()
     var schools: [School] = []
     var page: Int = 1
     
@@ -56,10 +55,9 @@ class SchoolListVC: UIViewController {
         Task {
             do {
                 let schools = try await NetworkManager.shared.fetchSchools(page: page)
-//                print(schools)
                 updateUI(with: schools)
             } catch {
-                print("ERROR")
+                // TODO: PRESENT CUSTOM ERROR WITH THE ERRORMANAGER RESPONSE
             }
         }
     }

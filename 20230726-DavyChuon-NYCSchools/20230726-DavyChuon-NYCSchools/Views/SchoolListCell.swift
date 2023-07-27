@@ -85,6 +85,11 @@ class SchoolListCell: UITableViewCell {
         schoolLocationLabel.text = "\(school.city), \(school.stateCode)"
         schoolGradesLabel.text = "Grades: \(school.finalgrades)"
         schoolTotalLabel.text = "Students: \(school.totalStudents)"
-        schoolGraduationLabel.text = "Graduation Rate: \(school.graduationRate)"
+        
+        if let gradRate = school.graduationRate?.formatToPercent() {
+            schoolGraduationLabel.text = "Graduation Rate: \(gradRate)"
+        } else {
+            schoolGraduationLabel.text = "Graduation Rate: N/A"
+        }
     }
 }
