@@ -10,7 +10,9 @@ import UIKit
 class SchoolListVC: UIViewController {
 
     // MARK: - Variables
-    let schools: [School] = School.getMockData()
+//    var schools: [School] = School.getMockData()
+    var schools: [School] = []
+    var page: Int = 1
     
     // MARK: - UI Components
     let tableView = UITableView()
@@ -22,6 +24,7 @@ class SchoolListVC: UIViewController {
         
         view.backgroundColor = .secondarySystemBackground
         configureTableView()
+        getSchools()
     }
     
     // MARK: - UI Setup
@@ -49,7 +52,25 @@ class SchoolListVC: UIViewController {
     }
     
     // MARK: - Methods
+    private func getSchools() {
+        Task {
+            do {
+                let schools = try await NetworkManager.shared.fetchSchools(page: page)
+//                print(schools)
+                updateUI(with: schools)
+            } catch {
+                print("ERROR")
+            }
+        }
+    }
     
+    private func updateUI(with newSchools: [School]) {
+        self.schools.append(contentsOf: newSchools)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.tableView.reloadData()
+        }
+    }
 }
 
 

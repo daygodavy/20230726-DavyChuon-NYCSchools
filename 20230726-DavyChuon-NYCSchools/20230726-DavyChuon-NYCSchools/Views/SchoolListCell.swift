@@ -56,7 +56,6 @@ class SchoolListCell: UITableViewCell {
             schoolNameLabel.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
             schoolNameLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             schoolNameLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-            schoolNameLabel.heightAnchor.constraint(equalToConstant: 90),
             
             schoolLocationLabel.topAnchor.constraint(equalTo: schoolNameLabel.bottomAnchor),
             schoolLocationLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
@@ -87,13 +86,5 @@ class SchoolListCell: UITableViewCell {
         schoolGradesLabel.text = "Grades: \(school.finalgrades)"
         schoolTotalLabel.text = "Students: \(school.totalStudents)"
         schoolGraduationLabel.text = "Graduation Rate: \(school.graduationRate)"
-        
-        adjustTitleHeight(school.schoolName)
-    }
-    
-    // Resizes schoolNameLabel height constraint
-    private func adjustTitleHeight(_ label: String) {
-        let newHeight = label.height(withConstrainedWidth: frame.width, font: .systemFont(ofSize: 22, weight: .bold))
-        schoolNameLabel.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
     }
 }

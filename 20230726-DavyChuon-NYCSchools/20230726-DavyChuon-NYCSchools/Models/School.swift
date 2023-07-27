@@ -18,7 +18,8 @@ struct School: Codable {
 //    let schoolEmail: String
 //    let website: String
     let finalgrades: String
-    let graduationRate: String
+//    let graduationRate: String
+    let graduationRate: String?
     let totalStudents: String
     
 //    let stats: SchoolStats
@@ -32,13 +33,13 @@ struct SchoolStats: Codable {
     let satWritingAvgScore: String
 }
 
-extension School {
-    public static func getMockData() -> [School] {
-        return [
-            School(schoolName: "HENRY STREET SCHOOL FOR INTERNATIONAL STUDIES", city: "Bronx", stateCode: "NY", finalgrades: "9-12", graduationRate: "96%", totalStudents: "1234"),
-            School(schoolName: "NEW EXPLORATIONS INTO SCIENCE, TECHNOLOGY AND MATH HIGH SCHOOL", city: "Springfield Gardens", stateCode: "NY", finalgrades: "9-12", graduationRate: "87%", totalStudents: "2345"),
-            School(schoolName: "CASCADES HIGH SCHOOL", city: "Staten Island", stateCode: "NY", finalgrades: "9-12", graduationRate: "100%", totalStudents: "3456"),
-            School(schoolName: "RALPH R. MCKEE CAREER AND TECHNICAL EDUCATION HIGH SCHOOL", city: "Long Island City", stateCode: "NY", finalgrades: "9-12", graduationRate: "71%", totalStudents: "4567")
-        ]
-    }
-}
+//extension School {
+//    public static func getMockData() -> [School] {
+//        return [
+//            School(schoolName: "HENRY STREET SCHOOL FOR INTERNATIONAL STUDIES", city: "Bronx", stateCode: "NY", finalgrades: "9-12", graduationRate: "96%", totalStudents: "1234"),
+//            School(schoolName: "NEW EXPLORATIONS INTO SCIENCE, TECHNOLOGY AND MATH HIGH SCHOOL", city: "Springfield Gardens", stateCode: "NY", finalgrades: "9-12", graduationRate: "87%", totalStudents: "2345"),
+//            School(schoolName: "CASCADES HIGH SCHOOL", city: "Staten Island", stateCode: "NY", finalgrades: "9-12", graduationRate: "100%", totalStudents: "3456"),
+//            School(schoolName: "RALPH R. MCKEE CAREER AND TECHNICAL EDUCATION HIGH SCHOOL", city: "Long Island City", stateCode: "NY", finalgrades: "9-12", graduationRate: "71%", totalStudents: "4567")
+//        ]
+//    }
+//}
