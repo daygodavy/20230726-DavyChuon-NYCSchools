@@ -10,18 +10,19 @@ import UIKit
 class SchoolDetailsVC: UIViewController {
     
     // MARK: - Variables
-    let schoolViewModel: SchoolDetailsVM
+    var schoolViewModel: SchoolDetailsVM
     
     // MARK: - UI Components
-    let schoolTitleLabel = SchoolTitleLabel(textAlignment: .center, fontSize: 22, textColor: .systemBlue)
-    let schoolReadingAvg = SchoolBodyLabel(textAlignment: .left, fontSize: 18)
-    let schoolWritingAvg = SchoolBodyLabel(textAlignment: .left, fontSize: 18)
-    let schoolMathAvg = SchoolBodyLabel(textAlignment: .left, fontSize: 18)
+    let schoolTitle = SchoolTitleLabel(textAlignment: .center, fontSize: 24, textColor: .systemBlue)
+    let schoolAddress = SchoolBodyLabel(textAlignment: .center, fontSize: 16)
+    let schoolStatsView = SchoolStatsCardView()
+    var mapView: SchoolMapView
 
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        loadingStats()
         setLabels()
     }
     
@@ -31,47 +32,58 @@ class SchoolDetailsVC: UIViewController {
     
     init(_ viewModel: SchoolDetailsVM) {
         schoolViewModel = viewModel
+        mapView = SchoolMapView(schoolViewModel.coordinate)
         super.init(nibName: nil, bundle: nil)
     }
     
     // MARK: - Setup UI
     private func configureUI() {
-        view.addSubview(schoolTitleLabel)
-        view.addSubview(schoolReadingAvg)
-        view.addSubview(schoolWritingAvg)
-        view.addSubview(schoolMathAvg)
+        view.backgroundColor = .systemBackground
+        view.addSubview(schoolTitle)
+        view.addSubview(mapView)
+        view.addSubview(schoolAddress)
+        view.addSubview(schoolStatsView)
         
         layoutUI()
     }
     
     private func layoutUI() {
         NSLayoutConstraint.activate([
-            schoolTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            schoolTitleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            schoolTitleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            schoolTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            schoolTitle.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 5),
+            schoolTitle.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -5),
             
-            schoolReadingAvg.topAnchor.constraint(equalTo: schoolTitleLabel.bottomAnchor),
-            schoolReadingAvg.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            schoolReadingAvg.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            schoolReadingAvg.heightAnchor.constraint(equalToConstant: 30),
+            mapView.topAnchor.constraint(equalTo: schoolTitle.bottomAnchor, constant: 30),
+            mapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            mapView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            mapView.heightAnchor.constraint(equalToConstant: 250),
             
-            schoolWritingAvg.topAnchor.constraint(equalTo: schoolReadingAvg.bottomAnchor),
-            schoolWritingAvg.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            schoolWritingAvg.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            schoolWritingAvg.heightAnchor.constraint(equalToConstant: 30),
+            schoolAddress.topAnchor.constraint(equalTo: mapView.bottomAnchor, constant: 5),
+            schoolAddress.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            schoolAddress.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            schoolAddress.heightAnchor.constraint(equalToConstant: 30),
             
-            schoolMathAvg.topAnchor.constraint(equalTo: schoolWritingAvg.bottomAnchor),
-            schoolMathAvg.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            schoolMathAvg.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            schoolMathAvg.heightAnchor.constraint(equalToConstant: 30),
+            schoolStatsView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            schoolStatsView.trailingAnchor.constraint(equalTo: view.centerXAnchor),
+            schoolStatsView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            schoolStatsView.heightAnchor.constraint(equalToConstant: 250)
         ])
     }
     
     private func setLabels() {
-        schoolTitleLabel.text = schoolViewModel.schoolName
-        schoolReadingAvg.text = schoolViewModel.readingAvgSAT
-        schoolWritingAvg.text = schoolViewModel.writingAvgSAT
-        schoolMathAvg.text = schoolViewModel.mathAvgSAT
+        schoolTitle.text = schoolViewModel.schoolName
+        schoolAddress.text = schoolViewModel.address
+        schoolStatsView.set(viewModel: schoolViewModel)
+    }
+    
+    private func loadingStats() {
+        schoolViewModel.onStatsLoaded = { [weak self] school in
+            guard let self = self, let school = school else { return }
+            DispatchQueue.main.async {
+                self.schoolViewModel.schoolStats = school
+                self.setLabels()
+            }
+        }
     }
     
 }

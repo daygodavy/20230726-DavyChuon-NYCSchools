@@ -31,12 +31,13 @@ class NetworkManager {
         do {
             return try decoder.decode([School].self, from: data)
         } catch {
+            print(error)
             throw ErrorManager.invalidData
         }
     }
     
-    func fetchSchool(id: String) async throws -> SchoolStats {
-        let endPoint = "\(baseURL)/f9bf-2cp4.json?DBN=\(id)"
+    func fetchSchool(id: String) async throws -> [SchoolStats] {
+        let endPoint = "\(baseURL)/f9bf-2cp4.json?dbn=\(id)"
         
         guard let url = URL(string: endPoint) else { throw ErrorManager.invalidURL }
         
@@ -45,8 +46,9 @@ class NetworkManager {
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw ErrorManager.invalidResponse }
         
         do {
-            return try decoder.decode(SchoolStats.self, from: data)
+            return try decoder.decode([SchoolStats].self, from: data)
         } catch {
+            print(error)
             throw ErrorManager.invalidData
         }
     }

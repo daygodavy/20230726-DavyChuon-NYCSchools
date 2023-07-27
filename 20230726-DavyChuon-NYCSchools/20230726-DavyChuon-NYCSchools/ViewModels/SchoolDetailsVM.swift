@@ -6,31 +6,78 @@
 //
 
 import Foundation
+import CoreLocation
 
 class SchoolDetailsVM {
     
     // MARK: - Variables
-    let school: SchoolStats
+    var schoolStats: SchoolStats
+    var schoolInfo: School
+    var onStatsLoaded: ((SchoolStats?)->Void)?
     
     // MARK: - Initializer
-    init(school: SchoolStats) {
-        self.school = school
+    init(schoolStats: SchoolStats, school: School) {
+        self.schoolStats = schoolStats
+        self.schoolInfo = school
+        getSchoolStats()
+    }
+    
+    private func getSchoolStats() {
+        Task {
+            do {
+                let data = try await NetworkManager.shared.fetchSchool(id: schoolStats.dbn)
+                setSchoolStats(data.first)
+                onStatsLoaded?(schoolStats)
+            } catch {
+                // TODO: PRESENT CUSTOM ERROR WITH THE ERRORMANAGER RESPONSE
+            }
+        }
+    }
+    
+    private func setSchoolStats(_ school: SchoolStats?) {
+        guard let school = school else { return }
+        print(school)
+        guard let _ = Int(school.satCriticalReadingAvgScore),
+        let _ = Int(school.satWritingAvgScore),
+        let _ = Int (school.satMathAvgScore)
+        else { return }
+        
+        schoolStats.satCriticalReadingAvgScore = school.satCriticalReadingAvgScore
+        schoolStats.satWritingAvgScore = school.satWritingAvgScore
+        schoolStats.satMathAvgScore = school.satMathAvgScore
     }
     
     // MARK: - Computed Properties
     var schoolName: String {
-        return "\(self.school.schoolName)"
+        return "\(schoolStats.schoolName)"
     }
     
     var readingAvgSAT: String {
-        return "SAT Critical Reading Avg: \(self.school.satCriticalReadingAvgScore)"
+        return "SAT Critical Reading Avg: \(schoolStats.satCriticalReadingAvgScore)"
     }
     
     var mathAvgSAT: String {
-        return "SAT Math Avg: \(self.school.satMathAvgScore)"
+        return "SAT Math Avg: \(schoolStats.satMathAvgScore)"
     }
     
     var writingAvgSAT: String {
-        return "SAT Writing Avg: \(self.school.satWritingAvgScore)"
+        return "SAT Writing Avg: \(schoolStats.satWritingAvgScore)"
+    }
+    
+    var phoneNumber: String {
+        return "Phone Number: \(schoolInfo.phoneNumber)"
+    }
+    
+    var address: String {
+        return "\(schoolInfo.primaryAddressLine1), \(schoolInfo.city) \(schoolInfo.stateCode) \(schoolInfo.zip)"
+    }
+    
+    var coordinate: CLLocationCoordinate2D? {
+        if let lat: CLLocationDegrees = Double(schoolInfo.latitude),
+           let long: CLLocationDegrees = Double(schoolInfo.longitude) {
+            return CLLocationCoordinate2D(latitude: lat, longitude: long)
+        }
+        
+        return nil
     }
 }

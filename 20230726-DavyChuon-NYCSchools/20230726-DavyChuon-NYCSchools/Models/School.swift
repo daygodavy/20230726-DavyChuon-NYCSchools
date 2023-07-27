@@ -10,24 +10,25 @@ import Foundation
 struct School: Codable {
     let dbn: String
     let schoolName: String
-//    let location: String
+    let primaryAddressLine1: String
     let city: String
     let stateCode: String
-//    let neighborhood: String
-//    let phoneNumber: String
-//    let schoolEmail: String
-//    let website: String
+    let zip: String
+    let latitude: String
+    let longitude: String
+    let phoneNumber: String
+    let website: String
     let finalgrades: String
     let graduationRate: String?
     let totalStudents: String
     
-//    let stats: SchoolStats
+//    let stats: SchoolStats?
 }
 
 struct SchoolStats: Codable {
     let dbn: String
     let schoolName: String
-    let satCriticalReadingAvgScore: String
-    let satMathAvgScore: String
-    let satWritingAvgScore: String
+    var satCriticalReadingAvgScore: String
+    var satMathAvgScore: String
+    var satWritingAvgScore: String
 }

@@ -25,6 +25,8 @@
 		5B5B694C2A72120800EA3D9B /* DataLoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B694B2A72120800EA3D9B /* DataLoadingVC.swift */; };
 		5B5B694E2A72188D00EA3D9B /* SchoolDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B694D2A72188D00EA3D9B /* SchoolDetailsVC.swift */; };
 		5B5B69502A7218AF00EA3D9B /* SchoolDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B694F2A7218AF00EA3D9B /* SchoolDetailsVM.swift */; };
+		5B5B69522A72DFE500EA3D9B /* SchoolMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B69512A72DFE500EA3D9B /* SchoolMapView.swift */; };
+		5B5B69542A72F2F700EA3D9B /* SchoolStatsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B69532A72F2F700EA3D9B /* SchoolStatsCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		5B5B694B2A72120800EA3D9B /* DataLoadingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingVC.swift; sourceTree = "<group>"; };
 		5B5B694D2A72188D00EA3D9B /* SchoolDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDetailsVC.swift; sourceTree = "<group>"; };
 		5B5B694F2A7218AF00EA3D9B /* SchoolDetailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDetailsVM.swift; sourceTree = "<group>"; };
+		5B5B69512A72DFE500EA3D9B /* SchoolMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolMapView.swift; sourceTree = "<group>"; };
+		5B5B69532A72F2F700EA3D9B /* SchoolStatsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolStatsCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +178,8 @@
 				5B5B693B2A71AF9D00EA3D9B /* SchoolListCell.swift */,
 				5B5B693D2A71B05500EA3D9B /* SchoolTitleLabel.swift */,
 				5B5B693F2A71B10D00EA3D9B /* SchoolBodyLabel.swift */,
+				5B5B69512A72DFE500EA3D9B /* SchoolMapView.swift */,
+				5B5B69532A72F2F700EA3D9B /* SchoolStatsCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -351,6 +357,7 @@
 				5B5B69462A71EA6900EA3D9B /* NetworkManager.swift in Sources */,
 				5B5B69022A71A60400EA3D9B /* AppDelegate.swift in Sources */,
 				5B5B69322A71A6AE00EA3D9B /* SchoolListVC.swift in Sources */,
+				5B5B69522A72DFE500EA3D9B /* SchoolMapView.swift in Sources */,
 				5B5B69042A71A60400EA3D9B /* SceneDelegate.swift in Sources */,
 				5B5B694C2A72120800EA3D9B /* DataLoadingVC.swift in Sources */,
 				5B5B69502A7218AF00EA3D9B /* SchoolDetailsVM.swift in Sources */,
@@ -358,6 +365,7 @@
 				5B5B693E2A71B05500EA3D9B /* SchoolTitleLabel.swift in Sources */,
 				5B5B694E2A72188D00EA3D9B /* SchoolDetailsVC.swift in Sources */,
 				5B5B69392A71AE4400EA3D9B /* School.swift in Sources */,
+				5B5B69542A72F2F700EA3D9B /* SchoolStatsCardView.swift in Sources */,
 				5B5B69402A71B10D00EA3D9B /* SchoolBodyLabel.swift in Sources */,
 				5B5B69432A71E54000EA3D9B /* String+Ext.swift in Sources */,
 				5B5B693C2A71AF9D00EA3D9B /* SchoolListCell.swift in Sources */,
