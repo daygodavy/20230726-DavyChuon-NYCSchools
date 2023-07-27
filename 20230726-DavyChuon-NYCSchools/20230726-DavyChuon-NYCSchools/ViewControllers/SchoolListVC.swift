@@ -7,11 +7,13 @@
 
 import UIKit
 
-class SchoolListVC: UIViewController {
+class SchoolListVC: DataLoadingVC {
 
     // MARK: - Variables
     var schools: [School] = []
     var page: Int = 1
+    var hasMoreSchools: Bool = true
+    var fetchInProgress: Bool = false
     
     // MARK: - UI Components
     let tableView = UITableView()
@@ -52,6 +54,9 @@ class SchoolListVC: UIViewController {
     
     // MARK: - Methods
     private func getSchools() {
+        // TODO: start showing spinner
+        fetchInProgress = true
+        showSpinner()
         Task {
             do {
                 let schools = try await NetworkManager.shared.fetchSchools(page: page)
@@ -59,10 +64,14 @@ class SchoolListVC: UIViewController {
             } catch {
                 // TODO: PRESENT CUSTOM ERROR WITH THE ERRORMANAGER RESPONSE
             }
+            
+            fetchInProgress = false
+            hideSpinner()
         }
     }
     
     private func updateUI(with newSchools: [School]) {
+        if newSchools.count < 25 { hasMoreSchools = false }
         self.schools.append(contentsOf: newSchools)
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -98,5 +107,18 @@ extension SchoolListVC: UITableViewDelegate, UITableViewDataSource {
     // Define spacing between cells
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 20.0
+    }
+    
+    // Determine when to continue paginating
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let frameHeight = scrollView.frame.size.height
+        
+        if offsetY > contentHeight - frameHeight {
+            guard !fetchInProgress, hasMoreSchools else { return }
+            page += 1
+            getSchools()
+        }
     }
 }

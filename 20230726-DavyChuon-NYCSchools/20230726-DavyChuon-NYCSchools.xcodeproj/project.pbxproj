@@ -22,6 +22,7 @@
 		5B5B69432A71E54000EA3D9B /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B69422A71E54000EA3D9B /* String+Ext.swift */; };
 		5B5B69462A71EA6900EA3D9B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B69452A71EA6900EA3D9B /* NetworkManager.swift */; };
 		5B5B694A2A71ED2800EA3D9B /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B69492A71ED2800EA3D9B /* ErrorManager.swift */; };
+		5B5B694C2A72120800EA3D9B /* DataLoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B694B2A72120800EA3D9B /* DataLoadingVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		5B5B69422A71E54000EA3D9B /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		5B5B69452A71EA6900EA3D9B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5B5B69492A71ED2800EA3D9B /* ErrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
+		5B5B694B2A72120800EA3D9B /* DataLoadingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				5B5B69312A71A6AE00EA3D9B /* SchoolListVC.swift */,
+				5B5B694B2A72120800EA3D9B /* DataLoadingVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				5B5B69022A71A60400EA3D9B /* AppDelegate.swift in Sources */,
 				5B5B69322A71A6AE00EA3D9B /* SchoolListVC.swift in Sources */,
 				5B5B69042A71A60400EA3D9B /* SceneDelegate.swift in Sources */,
+				5B5B694C2A72120800EA3D9B /* DataLoadingVC.swift in Sources */,
 				5B5B694A2A71ED2800EA3D9B /* ErrorManager.swift in Sources */,
 				5B5B693E2A71B05500EA3D9B /* SchoolTitleLabel.swift in Sources */,
 				5B5B69392A71AE4400EA3D9B /* School.swift in Sources */,
