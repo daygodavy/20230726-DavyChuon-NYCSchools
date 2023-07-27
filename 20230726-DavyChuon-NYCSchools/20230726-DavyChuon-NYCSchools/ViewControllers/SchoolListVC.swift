@@ -22,17 +22,24 @@ class SchoolListVC: DataLoadingVC {
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .secondarySystemBackground
+        configureView()
         configureTableView()
         getSchools()
     }
     
     // MARK: - UI Setup
+    private func configureView() {
+        view.backgroundColor = .secondarySystemBackground
+        navigationController?.navigationBar.prefersLargeTitles = true
+        let backBarBtnItem = UIBarButtonItem()
+        backBarBtnItem.title = "Back"
+        navigationItem.backBarButtonItem = backBarBtnItem
+    }
+    
     private func configureTableView() {
         view.addSubview(tableView)
         layoutTableView()
-        tableView.rowHeight = 250
+        tableView.rowHeight = 200
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
@@ -45,7 +52,7 @@ class SchoolListVC: DataLoadingVC {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 40),
+            tableView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor)
@@ -122,6 +129,9 @@ extension SchoolListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
         
         let school = schools[indexPath.section]
         let schoolStats = SchoolStats(dbn: school.dbn,
@@ -132,7 +142,8 @@ extension SchoolListVC: UITableViewDelegate, UITableViewDataSource {
         
         let vm = SchoolDetailsVM(schoolStats: schoolStats, school: school)
         let vc = SchoolDetailsVC(vm)
-        let navController = UINavigationController(rootViewController: vc)
-        present(navController, animated: true)
+        
+        navigationController?.modalPresentationStyle = .popover
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

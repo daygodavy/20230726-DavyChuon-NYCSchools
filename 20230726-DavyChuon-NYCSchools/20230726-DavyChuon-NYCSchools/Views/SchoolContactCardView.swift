@@ -53,7 +53,7 @@ class SchoolContactCardView: UIView {
             contactSubTitle.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             contactSubTitle.centerXAnchor.constraint(equalTo: centerXAnchor),
             contactSubTitle.heightAnchor.constraint(equalToConstant: 30),
-            contactSubTitle.widthAnchor.constraint(equalToConstant: 100),
+            contactSubTitle.widthAnchor.constraint(equalToConstant: 80),
             
             contactImage.centerYAnchor.constraint(equalTo: contactSubTitle.centerYAnchor),
             contactImage.trailingAnchor.constraint(equalTo: contactSubTitle.leadingAnchor),

@@ -18,7 +18,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = SchoolListVC()
+        
+        let initialVC = SchoolListVC()
+        initialVC.title = "NYC Schools"
+        
+        window?.rootViewController = UINavigationController(rootViewController: initialVC)
         window?.makeKeyAndVisible()
     }
 

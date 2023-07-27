@@ -22,7 +22,8 @@ class SchoolDetailsVC: UIViewController {
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
+        configureView()
+        configureSubviews()
         loadingStats()
         setLabels()
     }
@@ -38,8 +39,16 @@ class SchoolDetailsVC: UIViewController {
     }
     
     // MARK: - Setup UI
-    private func configureUI() {
+    private func configureView() {
         view.backgroundColor = .systemBackground
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+    }
+    
+    private func configureSubviews() {
         view.addSubview(schoolTitle)
         view.addSubview(mapView)
         view.addSubview(schoolAddress)
@@ -92,6 +101,10 @@ class SchoolDetailsVC: UIViewController {
                 self.setLabels()
             }
         }
+    }
+    
+    @objc private func popVC() {
+        
     }
     
 }
