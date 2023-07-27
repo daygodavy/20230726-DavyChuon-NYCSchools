@@ -23,6 +23,8 @@
 		5B5B69462A71EA6900EA3D9B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B69452A71EA6900EA3D9B /* NetworkManager.swift */; };
 		5B5B694A2A71ED2800EA3D9B /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B69492A71ED2800EA3D9B /* ErrorManager.swift */; };
 		5B5B694C2A72120800EA3D9B /* DataLoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B694B2A72120800EA3D9B /* DataLoadingVC.swift */; };
+		5B5B694E2A72188D00EA3D9B /* SchoolDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B694D2A72188D00EA3D9B /* SchoolDetailsVC.swift */; };
+		5B5B69502A7218AF00EA3D9B /* SchoolDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B694F2A7218AF00EA3D9B /* SchoolDetailsVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		5B5B69452A71EA6900EA3D9B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5B5B69492A71ED2800EA3D9B /* ErrorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
 		5B5B694B2A72120800EA3D9B /* DataLoadingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingVC.swift; sourceTree = "<group>"; };
+		5B5B694D2A72188D00EA3D9B /* SchoolDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDetailsVC.swift; sourceTree = "<group>"; };
+		5B5B694F2A7218AF00EA3D9B /* SchoolDetailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDetailsVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				5B5B69312A71A6AE00EA3D9B /* SchoolListVC.swift */,
+				5B5B694D2A72188D00EA3D9B /* SchoolDetailsVC.swift */,
 				5B5B694B2A72120800EA3D9B /* DataLoadingVC.swift */,
 			);
 			path = ViewControllers;
@@ -184,6 +189,7 @@
 		5B5B693A2A71AF2C00EA3D9B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				5B5B694F2A7218AF00EA3D9B /* SchoolDetailsVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -347,8 +353,10 @@
 				5B5B69322A71A6AE00EA3D9B /* SchoolListVC.swift in Sources */,
 				5B5B69042A71A60400EA3D9B /* SceneDelegate.swift in Sources */,
 				5B5B694C2A72120800EA3D9B /* DataLoadingVC.swift in Sources */,
+				5B5B69502A7218AF00EA3D9B /* SchoolDetailsVM.swift in Sources */,
 				5B5B694A2A71ED2800EA3D9B /* ErrorManager.swift in Sources */,
 				5B5B693E2A71B05500EA3D9B /* SchoolTitleLabel.swift in Sources */,
+				5B5B694E2A72188D00EA3D9B /* SchoolDetailsVC.swift in Sources */,
 				5B5B69392A71AE4400EA3D9B /* School.swift in Sources */,
 				5B5B69402A71B10D00EA3D9B /* SchoolBodyLabel.swift in Sources */,
 				5B5B69432A71E54000EA3D9B /* String+Ext.swift in Sources */,

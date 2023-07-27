@@ -54,12 +54,11 @@ class SchoolListVC: DataLoadingVC {
     
     // MARK: - Methods
     private func getSchools() {
-        // TODO: start showing spinner
         fetchInProgress = true
         showSpinner()
         Task {
             do {
-                let schools = try await NetworkManager.shared.fetchSchools(page: page)
+                let schools = try await NetworkManager.shared.fetchAllSchools(page: page)
                 updateUI(with: schools)
             } catch {
                 // TODO: PRESENT CUSTOM ERROR WITH THE ERRORMANAGER RESPONSE
@@ -120,5 +119,13 @@ extension SchoolListVC: UITableViewDelegate, UITableViewDataSource {
             page += 1
             getSchools()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print(schools[indexPath.section].schoolName)
+        
+//        let school = schools[indexPath.section]
+//        let vm = SchoolDetailsVM(school: <#T##SchoolStats#>)
+//        let vc = SchoolDetailsVC(vm)
     }
 }

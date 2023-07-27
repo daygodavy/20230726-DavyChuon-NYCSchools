@@ -18,7 +18,7 @@ class NetworkManager {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
     
-    func fetchSchools(page: Int) async throws -> [School] {
+    func fetchAllSchools(page: Int) async throws -> [School] {
         let offset: Int = page * limit
         let endPoint = "\(baseURL)/s3k6-pzi2.json?$limit=\(limit)&$offset=\(offset)"
 
@@ -29,8 +29,23 @@ class NetworkManager {
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw ErrorManager.invalidResponse }
 
         do {
-            let allSchools = try decoder.decode([School].self, from: data)
-            return allSchools
+            return try decoder.decode([School].self, from: data)
+        } catch {
+            throw ErrorManager.invalidData
+        }
+    }
+    
+    func fetchSchool(id: String) async throws -> SchoolStats {
+        let endPoint = "\(baseURL)/f9bf-2cp4.json?DBN=\(id)"
+        
+        guard let url = URL(string: endPoint) else { throw ErrorManager.invalidURL }
+        
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw ErrorManager.invalidResponse }
+        
+        do {
+            return try decoder.decode(SchoolStats.self, from: data)
         } catch {
             throw ErrorManager.invalidData
         }
