@@ -28,6 +28,7 @@ class SchoolDetailsVM {
                 let data = try await NetworkManager.shared.fetchSchool(id: schoolStats.dbn)
                 setSchoolStats(data.first)
                 onStatsLoaded?(schoolStats)
+                print("STATS LOADED!!!!!")
             } catch {
                 // TODO: PRESENT CUSTOM ERROR WITH THE ERRORMANAGER RESPONSE
             }

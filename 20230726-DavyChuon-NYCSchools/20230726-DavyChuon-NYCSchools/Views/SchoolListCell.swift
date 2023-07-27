@@ -13,7 +13,7 @@ class SchoolListCell: UITableViewCell {
     static let reuseID = "SchoolListCell"
     
     // MARK: - UI Components
-    let schoolNameLabel = SchoolTitleLabel(textAlignment: .left, fontSize: 22, textColor: .systemBlue)
+    let schoolNameLabel = SchoolTitleLabel(textAlignment: .left, fontSize: 20, textColor: .systemBlue)
     let schoolGradesLabel = SchoolBodyLabel(textAlignment: .left, fontSize: 16)
     let schoolLocationLabel = SchoolBodyLabel(textAlignment: .left, fontSize: 16)
     let schoolTotalLabel = SchoolBodyLabel(textAlignment: .left, fontSize: 14)
@@ -32,11 +32,14 @@ class SchoolListCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        updateBorderColor()
     }
     
     // MARK: - UI Setup
     private func configureCell() {
         backgroundColor = .systemBackground
+        layer.borderWidth = 2.0
+        layer.borderColor = UIColor.systemGray5.cgColor
         layer.cornerRadius = 10.0
         selectedBackgroundView?.layer.cornerRadius = 10.0
     }
@@ -90,6 +93,20 @@ class SchoolListCell: UITableViewCell {
             schoolGraduationLabel.text = "Graduation Rate: \(gradRate)"
         } else {
             schoolGraduationLabel.text = "Graduation Rate: N/A"
+        }
+    }
+    
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        updateBorderColor()
+    }
+    
+    private func updateBorderColor() {
+        if traitCollection.userInterfaceStyle == .dark {
+            layer.borderColor = UIColor.systemGray3.cgColor
+        } else {
+            layer.borderColor = UIColor.systemGray5.cgColor
         }
     }
 }

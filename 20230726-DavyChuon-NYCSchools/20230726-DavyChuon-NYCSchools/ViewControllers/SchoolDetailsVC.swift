@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SchoolDetailsVC: UIViewController {
+class SchoolDetailsVC: DataLoadingVC {
     
     // MARK: - Variables
     var schoolViewModel: SchoolDetailsVM
@@ -94,17 +94,22 @@ class SchoolDetailsVC: UIViewController {
     }
     
     private func loadingStats() {
+        print("1=====")
         schoolViewModel.onStatsLoaded = { [weak self] school in
+            print("2=====")
             guard let self = self, let school = school else { return }
+            print("3=====")
             DispatchQueue.main.async {
+                self.showSpinner()
+                print("4=====")
                 self.schoolViewModel.schoolStats = school
+                print("5=====")
                 self.setLabels()
+                print("6=====")
+                self.hideSpinner()
             }
+            print("7=====")
         }
+        print("8=====")
     }
-    
-    @objc private func popVC() {
-        
-    }
-    
 }
