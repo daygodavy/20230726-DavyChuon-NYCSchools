@@ -122,7 +122,6 @@ extension SchoolListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print(schools[indexPath.section].schoolName)
         
         let school = schools[indexPath.section]
         let schoolStats = SchoolStats(dbn: school.dbn,
@@ -135,6 +134,5 @@ extension SchoolListVC: UITableViewDelegate, UITableViewDataSource {
         let vc = SchoolDetailsVC(vm)
         let navController = UINavigationController(rootViewController: vc)
         present(navController, animated: true)
-        //        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

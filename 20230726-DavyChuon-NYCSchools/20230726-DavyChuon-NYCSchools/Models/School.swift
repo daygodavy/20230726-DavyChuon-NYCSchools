@@ -21,8 +21,6 @@ struct School: Codable {
     let finalgrades: String
     let graduationRate: String?
     let totalStudents: String
-    
-//    let stats: SchoolStats?
 }
 
 struct SchoolStats: Codable {

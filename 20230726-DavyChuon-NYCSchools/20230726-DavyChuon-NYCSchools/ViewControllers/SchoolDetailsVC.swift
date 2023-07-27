@@ -13,9 +13,10 @@ class SchoolDetailsVC: UIViewController {
     var schoolViewModel: SchoolDetailsVM
     
     // MARK: - UI Components
-    let schoolTitle = SchoolTitleLabel(textAlignment: .center, fontSize: 24, textColor: .systemBlue)
+    let schoolTitle = SchoolTitleLabel(textAlignment: .center, fontSize: 28, textColor: .systemBlue)
     let schoolAddress = SchoolBodyLabel(textAlignment: .center, fontSize: 16)
     let schoolStatsView = SchoolStatsCardView()
+    let schoolContactView = SchoolContactCardView()
     var mapView: SchoolMapView
 
     // MARK: - View Lifecycle
@@ -43,6 +44,7 @@ class SchoolDetailsVC: UIViewController {
         view.addSubview(mapView)
         view.addSubview(schoolAddress)
         view.addSubview(schoolStatsView)
+        view.addSubview(schoolContactView)
         
         layoutUI()
     }
@@ -56,17 +58,22 @@ class SchoolDetailsVC: UIViewController {
             mapView.topAnchor.constraint(equalTo: schoolTitle.bottomAnchor, constant: 30),
             mapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            mapView.heightAnchor.constraint(equalToConstant: 250),
+            mapView.heightAnchor.constraint(equalTo: mapView.widthAnchor, multiplier: 0.5),
             
             schoolAddress.topAnchor.constraint(equalTo: mapView.bottomAnchor, constant: 5),
             schoolAddress.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             schoolAddress.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             schoolAddress.heightAnchor.constraint(equalToConstant: 30),
             
-            schoolStatsView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            schoolStatsView.trailingAnchor.constraint(equalTo: view.centerXAnchor),
+            schoolStatsView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 2),
+            schoolStatsView.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -2),
             schoolStatsView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            schoolStatsView.heightAnchor.constraint(equalToConstant: 250)
+            schoolStatsView.heightAnchor.constraint(equalToConstant: 250),
+            
+            schoolContactView.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 2),
+            schoolContactView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -2),
+            schoolContactView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            schoolContactView.heightAnchor.constraint(equalToConstant: 250)
         ])
     }
     
@@ -74,6 +81,7 @@ class SchoolDetailsVC: UIViewController {
         schoolTitle.text = schoolViewModel.schoolName
         schoolAddress.text = schoolViewModel.address
         schoolStatsView.set(viewModel: schoolViewModel)
+        schoolContactView.set(viewModel: schoolViewModel)
     }
     
     private func loadingStats() {

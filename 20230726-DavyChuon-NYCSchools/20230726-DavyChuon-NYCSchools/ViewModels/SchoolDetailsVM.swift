@@ -36,7 +36,6 @@ class SchoolDetailsVM {
     
     private func setSchoolStats(_ school: SchoolStats?) {
         guard let school = school else { return }
-        print(school)
         guard let _ = Int(school.satCriticalReadingAvgScore),
         let _ = Int(school.satWritingAvgScore),
         let _ = Int (school.satMathAvgScore)
@@ -65,11 +64,15 @@ class SchoolDetailsVM {
     }
     
     var phoneNumber: String {
-        return "Phone Number: \(schoolInfo.phoneNumber)"
+        return "Phone Number:\n\(schoolInfo.phoneNumber)"
     }
     
     var address: String {
         return "\(schoolInfo.primaryAddressLine1), \(schoolInfo.city) \(schoolInfo.stateCode) \(schoolInfo.zip)"
+    }
+    
+    var website: String {
+        return "Website:\n\(schoolInfo.website)"
     }
     
     var coordinate: CLLocationCoordinate2D? {

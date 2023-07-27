@@ -12,10 +12,13 @@ class SchoolStatsCardView: UIView {
     let statsImage: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(systemName: "building.columns.circle")
+        iv.contentMode = .scaleAspectFit
+        iv.tintColor = .label
+        iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     } ()
     
-    let statsSubTitle = SchoolBodyLabel(textAlignment: .center, fontSize: 20)
+    let statsSubTitle = SchoolTitleLabel(textAlignment: .center, fontSize: 18, textColor: .label)
     let schoolReadingAvg = SchoolBodyLabel(textAlignment: .left, fontSize: 14)
     let schoolWritingAvg = SchoolBodyLabel(textAlignment: .left, fontSize: 14)
     let schoolMathAvg = SchoolBodyLabel(textAlignment: .left, fontSize: 14)
@@ -33,6 +36,7 @@ class SchoolStatsCardView: UIView {
     private func configureBackground() {
         backgroundColor = .secondarySystemBackground
         layer.cornerRadius = 18
+        translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func configureSubviews() {
@@ -41,11 +45,6 @@ class SchoolStatsCardView: UIView {
         addSubview(schoolReadingAvg)
         addSubview(schoolWritingAvg)
         addSubview(schoolMathAvg)
-        
-        translatesAutoresizingMaskIntoConstraints = false
-        statsImage.translatesAutoresizingMaskIntoConstraints = false
-        statsImage.contentMode = .scaleAspectFit
-        statsImage.tintColor = .label
         
         layoutUI()
     }
@@ -76,7 +75,6 @@ class SchoolStatsCardView: UIView {
             schoolMathAvg.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
             schoolMathAvg.trailingAnchor.constraint(equalTo: trailingAnchor),
             schoolMathAvg.heightAnchor.constraint(equalToConstant: 30)
-            
         ])
     }
     

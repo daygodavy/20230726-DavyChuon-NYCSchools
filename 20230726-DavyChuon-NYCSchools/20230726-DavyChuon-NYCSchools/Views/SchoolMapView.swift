@@ -19,18 +19,11 @@ class SchoolMapView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureView()
-        print("VIEW CONFIGURED")
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-//    convenience init(lat: CLLocationDegrees, long: CLLocationDegrees) {
-//        self.init(frame: .zero)
-//        coordinate.latitude = lat
-//        coordinate.longitude = long
-//    }
     
     convenience init(_ coord: CLLocationCoordinate2D?) {
         self.init(frame: .zero)
@@ -38,9 +31,8 @@ class SchoolMapView: UIView {
         guard let coord = coord else { return }
         coordinate.latitude = coord.latitude
         coordinate.longitude = coord.longitude
-        print(coordinate)
+
         addPinToMap()
-        print("PIN ADDED")
     }
     
     // MARK: - UI Setup
@@ -69,7 +61,6 @@ class SchoolMapView: UIView {
         mapView.addAnnotation(annotation)
         
         let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
-        print(region)
         mapView.setRegion(region, animated: true)
     }
 }
