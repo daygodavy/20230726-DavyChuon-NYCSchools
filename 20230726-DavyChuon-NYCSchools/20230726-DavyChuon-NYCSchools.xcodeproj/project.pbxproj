@@ -179,9 +179,8 @@
 		5B5B69362A71A87D00EA3D9B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5B5B693B2A71AF9D00EA3D9B /* SchoolListCell.swift */,
-				5B5B693D2A71B05500EA3D9B /* SchoolTitleLabel.swift */,
-				5B5B693F2A71B10D00EA3D9B /* SchoolBodyLabel.swift */,
+				5B5B695A2A73460200EA3D9B /* Custom Cell */,
+				5B5B69592A7345E900EA3D9B /* Custom Label */,
 				5B5B69512A72DFE500EA3D9B /* SchoolMapView.swift */,
 				5B5B69532A72F2F700EA3D9B /* SchoolStatsCardView.swift */,
 				5B5B69552A72FDEB00EA3D9B /* SchoolContactCardView.swift */,
@@ -228,6 +227,23 @@
 				5B5B69492A71ED2800EA3D9B /* ErrorManager.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		5B5B69592A7345E900EA3D9B /* Custom Label */ = {
+			isa = PBXGroup;
+			children = (
+				5B5B693D2A71B05500EA3D9B /* SchoolTitleLabel.swift */,
+				5B5B693F2A71B10D00EA3D9B /* SchoolBodyLabel.swift */,
+			);
+			path = "Custom Label";
+			sourceTree = "<group>";
+		};
+		5B5B695A2A73460200EA3D9B /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5B5B693B2A71AF9D00EA3D9B /* SchoolListCell.swift */,
+			);
+			path = "Custom Cell";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -476,7 +492,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -533,7 +549,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
