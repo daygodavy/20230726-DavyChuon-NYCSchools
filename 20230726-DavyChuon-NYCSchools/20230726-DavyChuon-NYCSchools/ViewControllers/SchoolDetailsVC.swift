@@ -14,7 +14,7 @@ class SchoolDetailsVC: DataLoadingVC {
     var schoolViewModel: SchoolDetailsVM
     
     // MARK: - UI Components
-    let schoolTitle = SchoolTitleLabel(textAlignment: .center, fontSize: 28, textColor: .systemBlue)
+    let schoolTitle = SchoolTitleLabel(textAlignment: .center, fontSize: 26, textColor: .systemBlue)
     let schoolAddress = SchoolBodyLabel(textAlignment: .center, fontSize: 16)
     let schoolStatsView = SchoolStatsCardView()
     let schoolContactView = SchoolContactCardView()
@@ -83,13 +83,13 @@ class SchoolDetailsVC: DataLoadingVC {
         NSLayoutConstraint.activate([
             schoolStatsView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 2),
             schoolStatsView.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -2),
-            schoolStatsView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -60),
-            schoolStatsView.heightAnchor.constraint(equalToConstant: 250),
+            schoolStatsView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            schoolStatsView.heightAnchor.constraint(equalToConstant: 230),
             
             schoolContactView.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 2),
             schoolContactView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -2),
-            schoolContactView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -60),
-            schoolContactView.heightAnchor.constraint(equalToConstant: 250),
+            schoolContactView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            schoolContactView.heightAnchor.constraint(equalToConstant: 230),
             
             headerBackgroundView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -40),
             headerBackgroundView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),

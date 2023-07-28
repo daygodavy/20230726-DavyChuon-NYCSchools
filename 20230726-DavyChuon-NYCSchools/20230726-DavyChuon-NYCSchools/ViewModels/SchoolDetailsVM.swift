@@ -63,7 +63,7 @@ class SchoolDetailsVM {
     }
     
     var readingAvgSAT: String {
-        return "SAT Critical Reading Avg: \(schoolStats.satCriticalReadingAvgScore)"
+        return "SAT Reading Avg: \(schoolStats.satCriticalReadingAvgScore)"
     }
     
     var mathAvgSAT: String {
